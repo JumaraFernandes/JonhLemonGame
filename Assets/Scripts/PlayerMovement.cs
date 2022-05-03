@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float turnSpeed = 20f;
+
     Animator m_Animator;
     Vector3 m_Movement;
-    // Start is called before the first frame update
+    Quaternion m_Rotation = Quaternion.identity;
+
     void Start()
     {
         m_Animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -25,5 +27,8 @@ public class PlayerMovement : MonoBehaviour
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
+
+        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        m_Rotation = Quaternion.LookRotation(desiredForward);
     }
 }
