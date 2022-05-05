@@ -2792,7 +2792,9 @@ MonoBehaviour:
   displayImageDuration: 1
   player: {fileID: 375154378541195220}
   exitBackgroundImageCanvasGroup: {fileID: 359336398}
+  exitAudio: {fileID: 953240045}
   caughtBackgroundImageCanvasGroup: {fileID: 1839452661}
+  caughtAudio: {fileID: 581091652}
 --- !u!1 &1147243865
 GameObject:
   m_ObjectHideFlags: 0
